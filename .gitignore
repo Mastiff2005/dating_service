@@ -137,3 +137,5 @@ media/*
 
 # IDE
 .vscode/
+
+sent_emails/

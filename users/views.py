@@ -3,7 +3,7 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
 from .serializers import UserSerializer
-from utils.image_processing import add_watermark
+from utils.utils import add_watermark
 
 
 @api_view(['POST'])

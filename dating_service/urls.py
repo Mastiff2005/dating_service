@@ -9,7 +9,7 @@ from api.views import index
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('api.urls')),
-    path('', index),
+    path('', index, name='index'),
 ]
 
 if settings.DEBUG:

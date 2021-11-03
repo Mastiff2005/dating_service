@@ -12,7 +12,18 @@
     <h1>Пользователи</h1>
     {% for user in users %}
         Имя: {{ user.username }}, пол: {{ user.gender }}<br>
+        кому нравится: 
+        {% for following in user.following.all %}
+            {{ following.user }},
+        {% endfor %}
+        <br>
+        кто нравится:
+        {% for follower in user.follower.all %}
+            {{ follower.liking }},
+        {% endfor %}
+        <br>
         <img src="{{ user.user_image.url }}" width=200px><br>
+        <hr>
     {% endfor %}
 </body>
 
