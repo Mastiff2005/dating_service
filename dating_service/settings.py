@@ -37,6 +37,7 @@ ALLOWED_HOSTS = ['*']
 INSTALLED_APPS = [
     'api',
     'users',
+    'utils',
     'rest_framework',
     'django_filters',
     'django.contrib.admin',

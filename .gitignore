@@ -133,6 +133,7 @@ static/*
 !static/redoc.yaml
 media/*
 !media/no-avatar.png
+!media/watermark.png
 
 # IDE
 .vscode/
