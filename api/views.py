@@ -1,11 +1,14 @@
 from django.core.mail import send_mail
 from django.shortcuts import get_object_or_404, render
+from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
 from .models import Follow
+from .viewsets import RetrieveListModelViewSet
 from users.models import User
+from users.serializers import UserSerializer
 
 
 def index(request):
@@ -45,3 +48,10 @@ def profile_follow(request, pk):
             )
         return Response(status=status.HTTP_201_CREATED)
     return Response(status=status.HTTP_400_BAD_REQUEST)
+
+
+class UserViewSet(RetrieveListModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+    filter_backends = (DjangoFilterBackend,)
+    filterset_fields = ('gender', 'first_name', 'last_name')
