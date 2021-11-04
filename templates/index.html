@@ -22,6 +22,13 @@
             {{ follower.liking }},
         {% endfor %}
         <br>
+        расстояние:
+        {% for key, value in distances.items %}
+            {% if key == user %}
+                {{ value }} км
+            {% endif %}
+        {% endfor %}
+        <br>
         <img src="{{ user.user_image.url }}" width=200px><br>
         <hr>
     {% endfor %}
