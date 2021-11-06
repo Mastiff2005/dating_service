@@ -34,6 +34,13 @@ def index(request):
 
 @api_view(['GET'])
 def profile_follow(request, pk):
+    '''
+    Добавляет пользователя в список понравившихся. Если текущий
+    пользователь находится в списке понравившихся добавляемого
+    пользователя, в теле ответа возвращается email добавленного
+    пользователя, на почты текущего и добавленного пользователей
+    высылаются уведомления "Вы понравились..."
+    '''
     follower = request.user
     following = get_object_or_404(User, pk=pk)
     follower_followers = [item.user for item in follower.following.all()]
@@ -51,8 +58,10 @@ def profile_follow(request, pk):
 
 
 class UserViewSet(RetrieveListModelViewSet):
+    '''
+    Выводит список пользователей. Доступный метод - GET
+    '''
     queryset = User.objects.all()
     serializer_class = UserSerializer
     filter_backends = (DjangoFilterBackend,)
     filterset_class = CustomFilter
-    filterset_fields = ('gender', 'first_name', 'last_name')

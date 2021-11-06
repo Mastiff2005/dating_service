@@ -6,20 +6,10 @@ from utils.utils import haversine
 
 class UserSerializer(serializers.ModelSerializer):
     user_image = serializers.ImageField(allow_empty_file=False, use_url=True)
-    distance = serializers.SerializerMethodField('get_distance')
 
-    class Meta:
-        model = User
-        fields = (
-            'username',
-            'password',
-            'email',
-            'first_name',
-            'last_name',
-            'gender',
-            'user_image',
-            'distance',
-        )
+    # динамически генерируемое поле расстояния от текущего до
+    # запрошенного пользователя
+    distance = serializers.SerializerMethodField('get_distance')
 
     def validate(self, data):
         required_fields = map(
@@ -37,3 +27,18 @@ class UserSerializer(serializers.ModelSerializer):
         lon2, lat2 = obj.longitude, obj.latitude
         distance = haversine(lon1, lat1, lon2, lat2)
         return distance
+
+    class Meta:
+        model = User
+        fields = (
+            'username',
+            'password',
+            'email',
+            'first_name',
+            'last_name',
+            'gender',
+            'user_image',
+            'latitude',
+            'longitude',
+            'distance',
+        )
