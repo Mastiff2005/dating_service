@@ -14,10 +14,12 @@ class User(AbstractUser):
         verbose_name='пол'
     )
     latitude = models.DecimalField(
-        max_digits=9, decimal_places=6, verbose_name='широта'
+        max_digits=9, decimal_places=6, verbose_name='широта',
+        default=0
     )
     longitude = models.DecimalField(
-        max_digits=9, decimal_places=6, verbose_name='долгота'
+        max_digits=9, decimal_places=6, verbose_name='долгота',
+        default=0
     )
     user_image = models.ImageField(
         upload_to='users/avatars/', default='no-avatar.png',

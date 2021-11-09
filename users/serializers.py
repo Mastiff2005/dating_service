@@ -23,7 +23,10 @@ class UserSerializer(serializers.ModelSerializer):
 
     def get_distance(self, obj):
         user = self.context['request'].user
-        lon1, lat1 = user.longitude, user.latitude
+        if user.longitude and user.latitude:
+            lon1, lat1 = user.longitude, user.latitude
+        else:
+            lon1, lat1 = 0, 0
         lon2, lat2 = obj.longitude, obj.latitude
         distance = haversine(lon1, lat1, lon2, lat2)
         return distance
