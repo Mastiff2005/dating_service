@@ -4,6 +4,8 @@ import urllib.request
 from urllib.parse import urlencode
 from bs4 import BeautifulSoup
 
+import products
+
 from .parser_data import PRODUCT_CATEGORIES
 from products.models import Category, Product
 
@@ -59,12 +61,12 @@ def get_products(category):
         # Добавляем товары в базу
         p_category = Category.objects.get_or_create(slug=category)[0]
         for product in parsed_block:
-            item = Product.objects.create(
+            item = Product.objects.get_or_create(
                 name=product['name'],
                 category=p_category,
                 price=product['price'],
                 image_url=product['image']
-            )
+            )[0]
             item.save()
 
         # Добавляем в общий список
