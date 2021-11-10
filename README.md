@@ -20,7 +20,7 @@ git clone https://github.com/Mastiff2005/dating_service.git
 
 cd dating_service
 
-* #### Переименуйте файл .env.exapmle в .env:
+* #### Переименуйте файл .env.example в .env:
 
 mv .env.example .env
 
