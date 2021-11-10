@@ -31,6 +31,7 @@ docker-compose up -d
 * ####  Выполните миграции:
 
 docker-compose exec web python manage.py makemigrations --noinput
+
 docker-compose exec web python manage.py migrate --noinput
 
 * #### Команда для сбора статики:
