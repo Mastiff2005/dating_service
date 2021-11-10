@@ -1,31 +1,35 @@
-Запуск проекта
+# Dating service
+API для сайта (приложения) знакомств, парсер товаров. Тестовое задание.
+
+### Запуск проекта
+
 Для запуска должны быть установлены Docker и docker-compose
 
-    Клонируйте репозиторий командой:
+*  #### Клонируйте репозиторий командой:
 
 git clone https://github.com/Mastiff2005/dating_service.git
 
-    Перейдите в директорию командой:
+* #### Перейдите в директорию командой:
 
 cd dating_service
 
-    Выполните команду для запуска контейнера:
+* #### Выполните команду для запуска контейнера:
 
 docker-compose up -d
 
-    Выполните миграции:
+* ####  Выполните миграции:
 
 docker-compose exec web python manage.py makemigrations --noinput
 docker-compose exec web python manage.py migrate --noinput
 
-    Команда для сбора статики:
+* #### Команда для сбора статики:
 
 docker-compose exec web python manage.py collectstatic --no-input
 
-    Команда для создания суперпользователя:
+* #### Команда для создания суперпользователя:
 
 docker-compose exec web python manage.py createsuperuser
-
+***
 
 Документация по API будет доступна по адресам http://127.0.0.1/swagger/ , http://127.0.0.1/redoc/
 
