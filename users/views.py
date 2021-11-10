@@ -8,7 +8,12 @@ from utils.utils import add_watermark
 
 @api_view(['POST'])
 def signup(request):
-    serializer = UserSerializer(data=request.data)
+    '''
+    Регистрация пользователя
+    '''
+    serializer = UserSerializer(
+        data=request.data, context={'request': request}
+    )
     serializer.is_valid(raise_exception=True)
 
     # Добавляем водяной знак на фото пользователя

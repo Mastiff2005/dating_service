@@ -23,7 +23,7 @@ class UserSerializer(serializers.ModelSerializer):
 
     def get_distance(self, obj):
         user = self.context['request'].user
-        if user.longitude and user.latitude:
+        if user.is_authenticated:
             lon1, lat1 = user.longitude, user.latitude
         else:
             lon1, lat1 = 0, 0
