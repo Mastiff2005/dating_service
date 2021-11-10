@@ -1,5 +1,12 @@
 # Dating service
 API для сайта (приложения) знакомств, парсер товаров. Тестовое задание.
+### Технологии:
+* Python 3.9
+* Django
+* Django REST framework
+* Docker
+* Celery
+* Redis
 
 ### Запуск проекта
 
