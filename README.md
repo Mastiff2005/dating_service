@@ -20,6 +20,10 @@ git clone https://github.com/Mastiff2005/dating_service.git
 
 cd dating_service
 
+* #### Переименуйте файл .env.exapmle в .env:
+
+mv .env.example .env
+
 * #### Выполните команду для запуска контейнера:
 
 docker-compose up -d
