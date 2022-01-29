@@ -1,4 +1,6 @@
 from django_filters import rest_framework as filters
+from django.db.models import F
+from django.db.models.functions import Power
 
 from math import degrees, radians
 from users.models import User
@@ -69,7 +71,15 @@ class CustomFilter(filters.FilterSet):
                 ))
                 if distance <= dist_param:
                     filtered_list.append(user)
-            queryset = User.objects.filter(username__in=filtered_list)
+            queryset = User.objects.filter(
+                username__in=filtered_list
+            ).annotate(
+                distance=(
+                    Power(F('latitude') - request_user_lat, 2) + (
+                        Power(F('longitude') - request_user_long, 2)
+                    )
+                )
+            ).order_by('distance')
         return queryset
 
     class Meta:
