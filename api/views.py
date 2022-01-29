@@ -22,10 +22,10 @@ def index(request):
     Выводит список пользователей и информацию о них
     '''
     # Запуск парсера
-    tasks.parse_products.delay()
+    # tasks.parse_products.delay()
 
     # Вывод списка пользователей
-    user_list = User.objects.all()
+    user_list = User.objects.all()[:100]
     if not request.user.is_authenticated:
         lon1, lat1 = 0, 0
     else:

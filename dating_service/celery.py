@@ -1,16 +1,16 @@
-import os
+# import os
 
-from celery import Celery
+# from celery import Celery
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'dating_service.settings')
+# os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'dating_service.settings')
 
-app = Celery('dating_service')
+# app = Celery('dating_service')
 
-app.config_from_object('django.conf:settings', namespace='CELERY')
+# app.config_from_object('django.conf:settings', namespace='CELERY')
 
-app.autodiscover_tasks()
+# app.autodiscover_tasks()
 
 
-@app.task(bind=True)
-def debug_task(self):
-    print(f'Request: {self.request!r}')
+# @app.task(bind=True)
+# def debug_task(self):
+#     print(f'Request: {self.request!r}')
